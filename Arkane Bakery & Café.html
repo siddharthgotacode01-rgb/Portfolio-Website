@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<!-- saved from url=(0085)file:///C:/Users/siddh/OneDrive/Desktop/hey%20world/Arcane%20bakery%20and%20cafe.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arkane Bakery &amp; Café</title>
+
+<link href="./Arkane Bakery &amp; Café_files/css2" rel="stylesheet">
+
+<style>
+:root {
+  --sage: #a8c3a2;
+  --pink: #f7d6db;
+  --cream: #fffaf7;
+  --dark: #2e2a28;
+  --accent: #e8b4b8;
+}
+
+/* DARK MODE */
+body.dark {
+  --cream:#1f1b18;
+  --dark:#f5e9e2;
+  --pink:#3a2b2b;
+  --sage:#6f8f6a;
+  --accent:#d4a373;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background: var(--cream);
+  font-family: 'Poppins', sans-serif;
+  color: var(--dark);
+  overflow-x: hidden;
+  transition:0.4s;
+}
+
+/* BLOBS */
+body::before, body::after {
+  content:"";
+  position:fixed;
+  width:400px;
+  height:400px;
+  border-radius:50%;
+  filter:blur(140px);
+  z-index:-1;
+}
+body::before { background: var(--pink); top:10%; left:-100px; }
+body::after { background: var(--sage); bottom:10%; right:-100px; }
+
+/* NAVBAR */
+.navbar {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 60px;
+  position:sticky;
+  top:0;
+  backdrop-filter: blur(20px);
+  background: rgba(255,255,255,0.5);
+}
+
+.logo {
+  font-family:'Great Vibes', cursive;
+  font-size:2.3rem;
+  color:var(--sage);
+}
+
+/* NAV RIGHT */
+.nav-right{
+  display:flex;
+  align-items:center;
+  gap:25px;
+}
+
+.nav-links {
+  display:flex;
+  gap:25px;
+}
+
+.nav-links a {
+  text-decoration:none;
+  color:var(--dark);
+  position:relative;
+}
+
+.nav-links a::after {
+  content:"";
+  width:0%;
+  height:2px;
+  background: linear-gradient(to right,var(--pink),var(--sage));
+  position:absolute;
+  bottom:-5px;
+  left:0;
+  transition:.4s;
+}
+.nav-links a:hover::after { width:100%; }
+
+/* 🌙 TOGGLE */
+.dark-toggle {
+  width:60px;
+  height:30px;
+  border-radius:50px;
+  background:rgba(255,255,255,0.6);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,0.4);
+  position:relative;
+  cursor:pointer;
+}
+
+.dark-toggle::before{
+  content:"";
+  position:absolute;
+  width:22px;
+  height:22px;
+  border-radius:50%;
+  background:var(--accent);
+  top:4px;
+  left:4px;
+  transition:0.3s;
+}
+
+body.dark .dark-toggle::before{
+  transform:translateX(28px);
+}
+
+/* HERO */
+.hero {
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  background: linear-gradient(135deg,var(--sage),var(--pink));
+}
+
+.hero h2 {
+  font-size:4rem;
+  font-family:'Playfair Display';
+  background: linear-gradient(to right,#fff,#ffecec);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.btn {
+  margin-top:25px;
+  display:inline-block;
+  padding:15px 35px;
+  border-radius:40px;
+  background:white;
+  text-decoration:none;
+  color:black;
+  transition:0.3s;
+}
+
+.btn:hover {
+  transform:scale(1.08);
+  box-shadow:0 10px 30px rgba(0,0,0,0.15);
+}
+
+/* SECTION */
+section {
+  padding:100px 60px;
+  text-align:center;
+}
+
+/* MENU */
+.menu-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:30px;
+  margin-top:40px;
+}
+
+.card {
+  padding:50px;
+  border-radius:30px;
+  background: rgba(255,255,255,0.6);
+  backdrop-filter:blur(15px);
+  box-shadow:0 20px 50px rgba(0,0,0,0.08);
+  transition:0.4s;
+}
+
+.card:hover {
+  transform:translateY(-12px) scale(1.05);
+  box-shadow:0 25px 60px rgba(0,0,0,0.15);
+}
+
+/* GALLERY */
+.gallery-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:15px;
+}
+
+.img {
+  height:230px;
+  border-radius:20px;
+  background-size:cover;
+  transition:0.4s;
+}
+
+.img:hover {
+  transform:scale(1.08);
+}
+
+/* IMAGES */
+.img:nth-child(1){background-image:url('https://images.unsplash.com/photo-1559620192-032c4bc4674e');}
+.img:nth-child(2){background-image:url('https://images.unsplash.com/photo-1542826438-bd32f43d626f');}
+.img:nth-child(3){background-image:url('https://images.unsplash.com/photo-1517686469429-8bdb88b9f907');}
+.img:nth-child(4){background-image:url('https://images.unsplash.com/photo-1509440159596-0249088772ff');}
+
+/* CONTACT */
+form {
+  max-width:500px;
+  margin:auto;
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+}
+
+input, textarea {
+  padding:14px;
+  border-radius:15px;
+  border:none;
+  background:rgba(255,255,255,0.7);
+}
+
+/* FOOTER */
+footer {
+  padding:30px;
+  background:var(--pink);
+  text-align:center;
+}
+
+.address {
+  margin-top:10px;
+  font-size:0.9rem;
+  opacity:0.8;
+}
+
+/* SOCIALS */
+.socials {
+  margin-top: 20px;
+  display:flex;
+  justify-content:center;
+  gap:20px;
+}
+
+.social-icon {
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:white;
+  transition:0.3s;
+}
+
+.social-icon:hover {
+  transform:scale(1.1);
+  background:var(--sage);
+  color:white;
+}
+
+/* REVEAL */
+.reveal {
+  opacity:0;
+  transform:translateY(60px);
+  transition:1s;
+}
+.reveal.active {
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .navbar{
+    padding:20px;
+    flex-direction:column;
+    gap:10px;
+  }
+  section{
+    padding:60px 20px;
+  }
+}
+</style>
+</head>
+
+<body class="">
+
+<header>
+<nav class="navbar">
+  <h1 class="logo">Arcane</h1>
+
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="file:///C:/Users/siddh/OneDrive/Desktop/hey%20world/Arcane%20bakery%20and%20cafe.html#home">Home</a></li>
+      <li><a href="file:///C:/Users/siddh/OneDrive/Desktop/hey%20world/menu.html">Menu</a></li>
+      <li><a href="file:///C:/Users/siddh/OneDrive/Desktop/hey%20world/Arcane%20bakery%20and%20cafe.html#gallery">Gallery</a></li>
+      <li><a href="file:///C:/Users/siddh/OneDrive/Desktop/hey%20world/Arcane%20bakery%20and%20cafe.html#contact">Contact</a></li>
+    </ul>
+
+    <div class="dark-toggle" onclick="toggleDark()"></div>
+  </div>
+</nav>
+</header>
+
+<section id="home" class="hero">
+  <div>
+    <h2>Arcane Bakery and Café</h2>
+    <a href="file:///C:/Users/siddh/OneDrive/Desktop/hey%20world/menu.html" class="btn">Explore Menu</a>
+  </div>
+</section>
+
+<section id="menu" class="reveal">
+  <h2>Top Picks</h2>
+  <div class="menu-grid">
+    <div class="card">🥞 Cinnamon Rolls</div>
+    <div class="card">🍩 Donuts</div>
+    <div class="card">🫔 Churro</div>
+    <div class="card">🍪 Cookies</div>
+  </div>
+</section>
+
+<section id="gallery" class="reveal">
+  <h2>Gallery</h2>
+  <div class="gallery-grid">
+    <div class="img"></div>
+    <div class="img"></div>
+    <div class="img"></div>
+    <div class="img"></div>
+  </div>
+</section>
+
+<section id="contact" class="reveal">
+  <h2>Contact</h2>
+  <form id="form">
+    <input type="text" placeholder="Name" required="">
+    <input type="email" placeholder="Email" required="">
+    <textarea placeholder="Message"></textarea>
+    <button type="submit">Send</button>
+  </form>
+</section>
+
+<footer>
+  <p>© 2026 Arcane Bakery &amp; Café</p>
+
+  <div class="address">
+    12 Rue de la Pâtisserie, Luxembourg City
+  </div>
+
+  <div class="socials">
+    <div class="social-icon">📸</div>
+    <div class="social-icon">𝕏</div>
+    <div class="social-icon">f</div>
+  </div>
+</footer>
+
+<script>
+function toggleDark(){
+  document.body.classList.toggle("dark");
+}
+
+document.getElementById("form").addEventListener("submit", e=>{
+  e.preventDefault();
+  alert("Message sent 💖");
+});
+
+window.addEventListener("scroll", ()=>{
+  document.querySelectorAll(".reveal").forEach(el=>{
+    if(el.getBoundingClientRect().top < window.innerHeight - 100){
+      el.classList.add("active");
+    }
+  });
+});
+</script>
+
+
+</body></html>
